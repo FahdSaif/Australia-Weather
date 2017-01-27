@@ -33,131 +33,68 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.MyTableref.dataSource=self
         self.MyTableref.delegate=self
         
-        showActivityIndicator()
-        //
-        //http://api.openweathermap.org/data/2.5/group?id=4163971,2147714,2174003&APPID=34605ed001ce1c650df89137aebc58f8
-        
-        
-        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?q=Sydneyl&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
-            //               Alamofire.request("http://api.openweathermap.org/data/2.5/group?id=4163971,2147714,2174003&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
-            
-            
-            //            print(response.request)  // original URL request
-            //            print(response.response) // HTTP URL response
-            //            print(response.data)     // server data
-            //            print(response.result)   // result of response serialization
-            self.hideActivityIndicator()
-            if let JSON = response.result.value {
-                //print("JSON: \(JSON)")
-                
-                let result=response.result
-                if let dict=result.value as? Dictionary<String,AnyObject>
-                {
-                    if let citycount=dict["cnt"] as? Int{
-                        self.globcitycount=citycount
-                    }else{
-                        self.globcitycount=1
-                    }
-                    
-                    if let cityname=dict["name"] as? String
-                    {
-                        self.globCityname=cityname
-                    }
-                    
-                    if let locmain=dict["main"]
-                    {
-//                        let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname)
-                        //let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:1)
-                        let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:1,iwasclicked:0)
-                        self.mysweat.append(w)
-                        self.MyTableref.reloadData()
-                    }
-                }
-            }
-        }
-        
-        
-        //second call to ALMOFIRE
-        showActivityIndicator()
-        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?q=Melbourne&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
-            //               Alamofire.request("http://api.openweathermap.org/data/2.5/group?id=4163971,2147714,2174003&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
-            
-            
-                       self.hideActivityIndicator()
-            if let JSON = response.result.value {
-                //print("JSON: \(JSON)")
-                
-                let result=response.result
-                if let dict=result.value as? Dictionary<String,AnyObject>
-                {
-                    if let citycount=dict["cnt"] as? Int{
-                        self.globcitycount=citycount
-                    }else{
-                        self.globcitycount=1
-                    }
-                    
-                    if let cityname=dict["name"] as? String
-                    {
-                        self.globCityname=cityname
-                    }
-                    
-                    if let locmain=dict["main"]
-                    {
-//                        let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname)
-                        //let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:2)
-                        let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:2,iwasclicked:0)
-                        self.mysweat.append(w)
-                        self.MyTableref.reloadData()
-                    }
-                }
-            }
-        }
-        
-        showActivityIndicator()
-        //Third call to Almofilre
-        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?q=Brisbane&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
-            //               Alamofire.request("http://api.openweathermap.org/data/2.5/group?id=4163971,2147714,2174003&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
-            
-            
-          
-            self.hideActivityIndicator()
-            if let JSON = response.result.value {
-                //print("JSON: \(JSON)")
-                
-                let result=response.result
-                if let dict=result.value as? Dictionary<String,AnyObject>
-                {
-                    if let citycount=dict["cnt"] as? Int{
-                        self.globcitycount=citycount
-                    }else{
-                        self.globcitycount=1
-                    }
-                    
-                    if let cityname=dict["name"] as? String
-                    {
-                        self.globCityname=cityname
-                    }
-                    
-                    if let locmain=dict["main"]
-                    {
-                        //let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:3)
-                        
-                        let w=Weathertype(dict: locmain as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:3,iwasclicked:0)
-                        
-                        self.mysweat.append(w)
-                        self.MyTableref.reloadData()
-                    }
-                }
-            }
-        }
-        
-        
-        
-        
-        
-
+        //Fahd: Calling the function to get JSON Data from OpenweatherAPI
+        self.singlehit()
     }//end of view did load
     
+    
+    func singlehit()
+    {
+        
+        showActivityIndicator()
+        
+        //faHD: hITTING THE api
+        Alamofire.request("http://api.openweathermap.org/data/2.5/group?id=4163971,2147714,2174003&APPID=34605ed001ce1c650df89137aebc58f8").responseJSON { response in
+            self.hideActivityIndicator()
+            if let JSON = response.result.value {
+                //print("JSON: \(JSON)")
+                
+                let result=response.result
+                if let dict=result.value as? Dictionary<String,AnyObject>
+                {
+                    if let citycount=dict["cnt"] as? Int{
+                        self.globcitycount=citycount
+                        print("singlehit self.globcitycount\(self.globcitycount)")
+                    }else{
+                        self.globcitycount=0
+                    }
+                    
+                    if let listvar=dict["list"] as? NSArray{
+                        //print("singlehit all ok")
+                        //print(listvar[0])
+                        for myiterator in 0..<listvar.count{
+                            if let firstele=listvar[myiterator] as? Dictionary<String,AnyObject>{
+                                if let mainfromfirstele=firstele["main"]
+                                {
+                                    
+                                    if let cityname=firstele["name"] as? String
+                                    {
+                                        self.globCityname=cityname
+                                        print(cityname)
+                                    }
+                                    
+                                    
+                                    print("all super ok")
+                                    let w=Weathertype(dict: mainfromfirstele as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:3,iwasclicked:0)
+                                    
+                                    self.mysweat.append(w)
+                                    
+                                    //print(mainfromfirstele)
+                                }
+                                
+                                
+                                
+                            }
+                        }
+                        self.MyTableref.reloadData()
+                        
+                                            }
+                }
+            }
+            
+        }
+        
+    }
     
     
     //spinner start
