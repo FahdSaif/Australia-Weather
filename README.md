@@ -1,19 +1,15 @@
 # OptusIntelli
-<b>Hi this is my Weatherapi App</b></br>
-A sample video uploaded which runs you through the source code and also demonstrates the runnable version of the App.<br>
+<b>Hi this is my Weatherapi App using OpenWeatherMap</b></br>
+A sample video explaining the source is also which demonstrates the runnable version of the App.<br>
 
 Youtube Video Link: https://www.youtube.com/watch?v=qYiUZzaK1PE&feature=youtu.be<br>
 Thankyou</br>
 
-Checked for internet connection the fired the Almofire request to get JSON<br>
+Checked for internet connection the fired the Almofire request to get JSON. If no internet connection is avalable then user will get the appropriate message. Once the data is fetched in the model object thre onwards even if internet disconnects the app runs smoothly.<br>
 
-Developed and tested using Iphone-7. Autolayouting refinement has to be done more on this.
+Developed and tested using Iphone-7. Autolayouting refinement has to be done more on this.<br>
 
-
-
-Checked for internet connection the fired the Almofire request to get JSON
-Youtube Video Link: https://www.youtube.com/watch?v=qYiUZzaK1PE&feature=youtu.be
-Thankyou
-Happy Coding!
-Fahd
-Perth, Australia
+Thankyou<br>
+Happy Coding!<br>
+Fahd<br>
+Perth, Australia<br>
