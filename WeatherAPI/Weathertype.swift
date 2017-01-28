@@ -14,9 +14,15 @@ class Weathertype: NSObject {
     var temp:Double=0.0
     var temp_max:Double=0.0
     var temp_min:Double=0.0
+    
+    
+    var sea_level:Double=0.0
+    var grnd_level:Double=0.0
+    
     var cityname:String=""
     var itemsequence:Int=0
     var iwasclicked:Int=0
+
 
     
 //    humidity = 83;
