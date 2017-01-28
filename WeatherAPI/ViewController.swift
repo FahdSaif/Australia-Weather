@@ -27,6 +27,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //var arrayofobjects=[]()
     var temperature:Double=0.0
     var city:String=""
+    var netisworking:Bool=false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.MyTableref.delegate=self
         
         //Fahd: Calling the function to get JSON Data from OpenweatherAPI
-        self.singlehit()
+        netisworking=isInternetAvailable()
+        
+        if(netisworking){
+            self.singlehit()
+        }else{
+            //No internet or WIFI available
+            let alert=UIAlertController(title: "Please connect to the Network/Wifi", message: "No Data Available", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
     }//end of view did load
     
     
@@ -75,8 +90,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                                     
                                     
                                     print("all super ok")
-                                    let w=Weathertype(dict: mainfromfirstele as! Dictionary<String,AnyObject>, cityname: self.globCityname,itemsequence:3,iwasclicked:0)
-                                    
+                                    let w=Weathertype(dict: (mainfromfirstele as? Dictionary<String,AnyObject>)!, cityname: self.globCityname,itemsequence:myiterator,iwasclicked:0)
                                     self.mysweat.append(w)
                                     
                                     //print(mainfromfirstele)
