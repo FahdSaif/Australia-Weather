@@ -2,8 +2,8 @@
 <b>Hi this is my Weatherapi App using OpenWeatherMap</b></br>
 A sample video explaining the source is also which demonstrates the runnable version of the App.<br>
 
-Youtube Video Link: https://www.youtube.com/watch?v=qYiUZzaK1PE&feature=youtu.be<br>
-Thankyou</br>
+Youtube Video Link: 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qYiUZzaK1PE" frameborder="0" allowfullscreen></iframe>
 
 Checked for internet connection the fired the Almofire request to get JSON. If no internet connection is avalable then user will get the appropriate message. Once the data is fetched in the model object thre onwards even if internet disconnects the app runs smoothly.<br>
 
