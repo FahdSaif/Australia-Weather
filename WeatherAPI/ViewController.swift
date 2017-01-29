@@ -101,7 +101,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                                 
                             }
                         }
-                        self.MyTableref.reloadData()
+                        //self.MyTableref.reloadData()
+                        
+                        DispatchQueue.main.async {
+                            self.MyTableref.reloadData()
+                        }
                         
                                             }
                 }
